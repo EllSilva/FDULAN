@@ -1,11 +1,22 @@
 .logo {
     width: 20%;
+    padding: 10px;
+}
+
+
+@media (max-width: 575px) {
+    .logo {
+        width: 90px;
+        padding: 10px;
+    }
+
 }
 
 .img-slide {
     background-image: url('../images/banner/banner-1.jpg');
     /* Caminho da imagem */
 }
+
 .img-stagio {
     background-image: url('../images/backgrounds/success-story.jpg');
     /* Caminho da imagem */

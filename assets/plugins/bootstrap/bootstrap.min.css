@@ -1,4 +1,4 @@
-/*!
+/*!   
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
@@ -4314,7 +4314,7 @@ input[type=submit].btn-block {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    /*! flex-wrap: wrap;  */ 
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: justify;
