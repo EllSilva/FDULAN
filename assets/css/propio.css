@@ -1,0 +1,40 @@
+.logo {
+    width: 20%;
+}
+
+.img-slide {
+    background-image: url('../images/banner/banner-1.jpg');
+    /* Caminho da imagem */
+}
+.img-stagio {
+    background-image: url('../images/backgrounds/success-story.jpg');
+    /* Caminho da imagem */
+
+}
+
+.valores div {
+    background: #ffffff;
+    border-left: 6px solid #9f3d51;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: background 0.3s;
+}
+
+.valores div:hover {
+    background: #eef6ff;
+}
+
+.valores div strong {
+    color: #9f3d51;
+    display: block;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.valores div p {
+    margin: 0;
+    font-size: 15px;
+    color: #555;
+}
