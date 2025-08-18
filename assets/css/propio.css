@@ -33,6 +33,10 @@ span {
   background-image: url('../images/backgrounds/success-story.jpg');
 }
 
+.img-stagio2 {
+  background-image: url('../images/backgrounds/success-story2.jpg');
+}
+
 .img-contacto {
   background-image: url('../images/backgrounds/success-story.jpg');
 }
@@ -53,8 +57,8 @@ span {
 .valores div {
   background: #ffffff;
   border-left: 6px solid #9f3d51;
-  padding: 10px;
-  margin-bottom: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: background 0.3s;
@@ -252,7 +256,7 @@ span {
  #testimonials_header h1 {
    font-size: 18px;
    font-weight: 600;
-   color: #3758f9;
+   color: #9f3d51;
  }
 
  #testimonials_header h2 {
@@ -332,7 +336,7 @@ span {
    background-color: #fff;
    width: 25px;
    height: 25px;
-   color: #3758f9;
+   color: #9f3d51;
    border: 1px solid #f9fafb;
    border-radius: 100%;
    box-shadow: 0px 0px 20px 0px rgba(92, 115, 160, 0.2);
@@ -361,7 +365,7 @@ span {
  }
 
  .swiper-pagination.active {
-   background-color: #3758f9;
+   background-color: #9f3d51;
  }
 
  /********** Fim Slider **********/
