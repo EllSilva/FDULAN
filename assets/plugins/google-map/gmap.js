@@ -1,138 +1,52 @@
-window.marker = null;
+ // Centraliza no Município do Chitato
+    var map = L.map('map').setView([-7.35, 20.83], 13);
 
-function initialize() {
-  var map;
-  var latitude = $('#map_canvas').attr('data-latitude');
-  var longitude = $('#map_canvas').attr('data-longitude');
-  var nottingham = new google.maps.LatLng(latitude, longitude);
-  var style = [{
-      "featureType": "landscape",
-      "stylers": [{
-          "hue": "#FFAD00"
-        },
-        {
-          "saturation": 50.2
-        },
-        {
-          "lightness": -34.8
-        },
-        {
-          "gamma": 1
-        }
-      ]
-    },
-    {
-      "featureType": "road.highway",
-      "stylers": [{
-          "hue": "#FFAD00"
-        },
-        {
-          "saturation": -19.8
-        },
-        {
-          "lightness": -1.8
-        },
-        {
-          "gamma": 1
-        }
-      ]
-    },
-    {
-      "featureType": "road.arterial",
-      "stylers": [{
-          "hue": "#FFAD00"
-        },
-        {
-          "saturation": 72.4
-        },
-        {
-          "lightness": -32.6
-        },
-        {
-          "gamma": 1
-        }
-      ]
-    },
-    {
-      "featureType": "road.local",
-      "stylers": [{
-          "hue": "#FFAD00"
-        },
-        {
-          "saturation": 74.4
-        },
-        {
-          "lightness": -18
-        },
-        {
-          "gamma": 1
-        }
-      ]
-    },
-    {
-      "featureType": "water",
-      "stylers": [{
-          "hue": "#00FFA6"
-        },
-        {
-          "saturation": -63.2
-        },
-        {
-          "lightness": 38
-        },
-        {
-          "gamma": 1
-        }
-      ]
-    },
-    {
-      "featureType": "poi",
-      "stylers": [{
-          "hue": "#FFC300"
-        },
-        {
-          "saturation": 54.2
-        },
-        {
-          "lightness": -14.4
-        },
-        {
-          "gamma": 1
-        }
-      ]
-    }
-  ];
-  var mapOptions = {
-    center: nottingham,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    backgroundColor: "#000",
-    zoom: 15,
-    panControl: false,
-    zoomControl: true,
-    mapTypeControl: false,
-    scaleControl: false,
-    streetViewControl: false,
-    overviewMapControl: false,
-    zoomControlOptions: {
-      style: google.maps.ZoomControlStyle.LARGE
-    }
-  }
-  map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-  var mapType = new google.maps.StyledMapType(style, {
-    name: "Grayscale"
-  });
-  map.mapTypes.set('grey', mapType);
-  map.setMapTypeId('grey');
-  var marker_image = 'plugins/google-map/images/marker.png';
-  var pinIcon = new google.maps.MarkerImage(marker_image, null, null, null, new google.maps.Size(37, 55));
-  marker = new google.maps.Marker({
-    position: nottingham,
-    map: map,
-    icon: pinIcon,
-    title: 'Shoper'
-  });
-}
-var map = document.getElementById('map_canvas');
-if (map != null) {
-  google.maps.event.addDomListener(window, 'load', initialize);
-}
+    // Camadas Google Maps
+    var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']
+    }).addTo(map);
+
+    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']
+    });
+
+    var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+        maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']
+    });
+
+    var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
+        maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']
+    });
+
+    // Controle de camadas
+    var baseMaps = {
+        "🗺️ Ruas": googleStreets,
+        "🌍 Satélite": googleSat,
+        "🛰️ Híbrido": googleHybrid,
+        "⛰️ Terreno": googleTerrain
+    };
+    L.control.layers(baseMaps, null, {position: 'topright'}).addTo(map);
+
+    // Ícone personalizado
+    var customIcon = L.icon({
+      iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+      popupAnchor: [0, -35]
+    });
+
+    // Marcador com popup bonito
+    var marker = L.marker([-7.35, 20.83], {icon: customIcon}).addTo(map);
+    marker.bindPopup(
+      '<div class="popup-title">Município do Chitato</div>' +
+      '<div class="popup-sub">Província da Lunda-Norte, Angola</div>'
+    ).openPopup();
+
+    // Caixa de informação fixa
+    var info = L.control({position: 'topleft'});
+    info.onAdd = function () {
+      this._div = L.DomUtil.create('div', 'info');
+      this._div.innerHTML = "<h4>📍 Mapa de Chitato</h4><p>Explore a Lunda-Norte em diferentes estilos de mapa.</p>";
+      return this._div;
+    };
+    info.addTo(map);

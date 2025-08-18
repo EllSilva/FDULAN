@@ -14,12 +14,12 @@ export default {
 
   async mounted() {
 
- 
-    
+
+
     AOS.init({
       duration: 1000,
     });
-   
+
 
     var slider = new KeenSlider(
       "#my-keen-slider",
@@ -59,90 +59,35 @@ export default {
     )
 
 
-
-    var slider = new KeenSlider(
-      "#my-keen-slider2",
-      {
-        loop: true,
+    var swiper = new Swiper(".swiper", {
+      loop: true,
+      grabCursor: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
       },
-      [
-        (slider) => {
-          let timeout
-          let mouseOver = false
-          function clearNextTimeout() {
-            clearTimeout(timeout)
-          }
-          function nextTimeout() {
-            clearTimeout(timeout)
-            if (mouseOver) return
-            timeout = setTimeout(() => {
-              slider.next()
-            }, 2000)
-          }
-          slider.on("created", () => {
-            slider.container.addEventListener("mouseover", () => {
-              mouseOver = true
-              clearNextTimeout()
-            })
-            slider.container.addEventListener("mouseout", () => {
-              mouseOver = false
-              nextTimeout()
-            })
-            nextTimeout()
-          })
-          slider.on("dragStarted", clearNextTimeout)
-          slider.on("animationEnded", nextTimeout)
-          slider.on("updated", nextTimeout)
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 18
         },
-      ]
-    )
-
-    var slider = new KeenSlider(
-      "#my-keen-slider3",
-      {
-        loop: true,
-      },
-      [
-        (slider) => {
-          let timeout
-          let mouseOver = false
-          function clearNextTimeout() {
-            clearTimeout(timeout)
-          }
-          function nextTimeout() {
-            clearTimeout(timeout)
-            if (mouseOver) return
-            timeout = setTimeout(() => {
-              slider.next()
-            }, 2000)
-          }
-          slider.on("created", () => {
-            slider.container.addEventListener("mouseover", () => {
-              mouseOver = true
-              clearNextTimeout()
-            })
-            slider.container.addEventListener("mouseout", () => {
-              mouseOver = false
-              nextTimeout()
-            })
-            nextTimeout()
-          })
-          slider.on("dragStarted", clearNextTimeout)
-          slider.on("animationEnded", nextTimeout)
-          slider.on("updated", nextTimeout)
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 18
         },
-      ]
-    )
+        1188: {
+          slidesPerView: 3,
+          spaceBetween: 24
+        }
+      }
+    });
 
 
-    
-    var slider = new KeenSlider("#my-keen-slider4", {
-      slides: {
-        perView: 6,
-        loop: true,
-      },
-    })
-  
+
   },
   template: await get_template('./assets/js/view/home/home')
 }

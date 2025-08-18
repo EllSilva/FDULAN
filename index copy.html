@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider de Testemunhos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slider-container {
+      width: 90%;
+      max-width: 1100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .card {
+      flex: 0 0 calc(100% / 3);
+      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    .card-content {
+      background: #9f3d51;
+      color: #fff;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+
+    .card-content:hover {
+      transform: translateY(-8px);
+    }
+
+    .card-content p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .card-content h4 {
+      font-size: 17px;
+      margin: 0;
+      font-weight: bold;
+      text-align: right;
+      opacity: 0.9;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: #9f3d51;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 10px;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10;
+      transition: 0.3s;
+    }
+
+    .arrow:hover {
+      background: #9f3d51;
+      color: #fff;
+    }
+
+    .arrow-left {
+      left: -20px;
+    }
+
+    .arrow-right {
+      right: -20px;
+    }
+
+    /* Responsivo */
+    @media(max-width: 900px) {
+      .card { flex: 0 0 calc(100% / 2); }
+    }
+
+    @media(max-width: 600px) {
+      .card { flex: 0 0 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider-container">
+    <div class="slider" id="slider">
+      <div class="card">
+        <div class="card-content">
+          <p>"A universidade transformou minha visão de futuro. Hoje sinto-me preparado para os desafios profissionais."</p>
+          <h4>- João Silva</h4>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>"Professores dedicados e colegas inspiradores criaram um ambiente incrível de aprendizagem."</p>
+          <h4>- Maria Fernandes</h4>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>"A experiência foi enriquecedora, tanto no crescimento pessoal quanto profissional."</p>
+          <h4>- Pedro Gomes</h4>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>"Os projetos práticos me deram confiança para atuar no mercado de trabalho."</p>
+          <h4>- Ana Costa</h4>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>"Uma verdadeira jornada de aprendizado e amizades inesquecíveis."</p>
+          <h4>- Luís Santos</h4>
+        </div>
+      </div>
+    </div>
+    <div class="arrow arrow-left" onclick="moveSlide(-1)">&#10094;</div>
+    <div class="arrow arrow-right" onclick="moveSlide(1)">&#10095;</div>
+  </div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    let currentIndex = 0;
+    const totalCards = document.querySelectorAll('.card').length;
+    const cardsPerView = 3;
+
+    function moveSlide(direction) {
+      const maxIndex = totalCards - cardsPerView;
+      currentIndex += direction;
+
+      if (currentIndex < 0) currentIndex = maxIndex;
+      if (currentIndex > maxIndex) currentIndex = 0;
+
+      slider.style.transform = `translateX(-${currentIndex * (100 / cardsPerView)}%)`;
+    }
+  </script>
+
+</body>
+</html>
