@@ -260,7 +260,7 @@ span {
  }
 
  #testimonials_header h2 {
-   color: #111928;
+   color: #9f3d51;
    font-size: 40px;
  }
 
@@ -333,13 +333,16 @@ span {
 
  .swiper-button-prev,
  .swiper-button-next {
-   background-color: #fff;
-   width: 25px;
-   height: 25px;
+   background-color: #9f3d51;
+   width: 145px;
+   height: 145px;
    color: #9f3d51;
-   border: 1px solid #f9fafb;
-   border-radius: 100%;
+   border: 1px solid #f9fafb; 
    box-shadow: 0px 0px 20px 0px rgba(92, 115, 160, 0.2);
+ }
+
+ .nome-texte { 
+   color: #9f3d51; 
  }
 
  .swiper-button-prev::after {
