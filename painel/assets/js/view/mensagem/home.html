@@ -1,0 +1,66 @@
+<div>
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Nova mensagem</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Pages</li>
+          <li class="breadcrumb-item active">Contact</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section contact">
+
+      <div class="row gy-4">
+
+ 
+
+        <div class="col-xl-12">
+          <div class="card p-4">
+            <form action="forms/contact.php" method="post" class="php-email-form">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Título" required>
+                </div>
+
+                <div class="col-sm-12">
+                  <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                      <option selected>Brigadistas</option>
+                      <option>Técnicos</option>
+                      <option>Administradores</option>
+
+                    </select>
+                      <label for="floatingSelect">Destinatário</label>
+                  </div>
+                </div>
+
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Sua mensagem" required></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+ 
+
+                  <button type="submit">Enviar mensagem</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+
+</div>

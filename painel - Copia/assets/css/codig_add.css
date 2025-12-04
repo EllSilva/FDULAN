@@ -1,0 +1,29 @@
+a :hover {
+    text-decoration: none !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+
+
+.btn_add {
+    height: 67%;
+    width: 100%;
+}
+
+
+.btn_add2 {
+    font-size: xx-large;
+    text-align: center;
+    justify-content: center;
+}
+
+@media screen and (max-width:768px) {
+    .btn_add {
+        height: 100%;
+        width: 100%;
+    }
+ 
+}
